@@ -1,5 +1,5 @@
 import { LayoutComponents } from "../../components/LayoutComponents";
-import jpIMG from '../../assets/celta.png';
+import jpIMG from '../../assets/logo.png';
 import { LayoutMenuNav } from "../../components/LayoutMenuNav";
 import { validateEmail } from '../../utils/validade';
 import { BASE_URL } from '../../utils/requests';
@@ -69,7 +69,7 @@ export const Register = () => {
 
                     <div className="wrap-input">
                         <label htmlFor="email">Informe seu email</label>
-                        <input type="email" className="" id="email" />
+                        <input type="email" className="has-val input" id="email" />
                     </div>
 
                     <div className="wrap-input">

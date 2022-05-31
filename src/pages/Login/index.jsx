@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import jpIMG from '../../assets/celta.png';
+import jpIMG from '../../assets/logo.png';
 import { LayoutComponents } from '../../components/LayoutComponents';
 
 export const Login = () => {

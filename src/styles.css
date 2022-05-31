@@ -24,8 +24,9 @@
 }
 
 .wrap-login {
-    width: 390px;
-    background-color: rgb(241, 165, 0);
+    width: 40%;
+    margin: 1% 0 0 20%;
+    background-color: rgb(255, 174, 0);
     border-radius: 10px;
 
     overflow: hidden;
@@ -54,7 +55,7 @@
 .wrap-input{
     width: 100%;
     position: relative;
-    border-bottom: 2px solid #adadad;
+    border-bottom: 2px solid #333;
     margin-bottom: 37px;
 }
 
@@ -161,3 +162,48 @@
     top: -10px;
 }
 
+.wrap-login-consult {
+    width: 55%;
+    margin: 2% 0 0 32%;
+    background-color: rgb(255, 174, 0);
+    border-radius: 10px;
+
+    overflow: hidden;
+    padding: 77px 55px 33px 55px;
+
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.Item-container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 4px;
+    background: rgb(255, 190, 50);
+  }
+  
+  .Item-field {
+    border: none;
+    outline: none;
+    font-size: 18px;
+  }
+
+  .btn-consult{
+    margin-left: 50%;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #333;
+
+    line-height: 1.2;
+
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+  }

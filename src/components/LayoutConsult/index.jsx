@@ -1,14 +1,17 @@
+import React from 'react';
+import { Link } from "react-router-dom";
 
 
-export const LayoutList=(usuarios)=> {
-    const value = usuarios.value;
-    return (
-      <ul>
-        {value.map((value) =>
-              <li key={value.toString()}>
-              {value}
-            </li>
-        )}
-      </ul>
-    );
-  }
+export const LayoutConsult = ({  nome, email, id }) => {
+  return (
+    <div className="Item-container">
+      <li className="Item-field"
+        >Nome: {nome} Email: {email}</li>
+        <Link to={`/edit/${id}`}>
+      <button className="btn-consult">Editar</button>
+      </Link>´
+    </div>
+  );
+};
+
+

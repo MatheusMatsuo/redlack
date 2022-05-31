@@ -1,4 +1,4 @@
-import jpIMG from '../../assets/celta.png';
+import jpIMG from '../../assets/logo.png';
 import './styles.css'
 
 export const Nav = () => {

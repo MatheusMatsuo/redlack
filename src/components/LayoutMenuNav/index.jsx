@@ -16,23 +16,23 @@ export const LayoutMenuNav = () => {
                     </header>
                     <ul class="nav">
                         <li>
-                            <a href="/edit">
-                                <i class="zmdi zmdi-view-dashboard"></i> Usuários
+                            <a href="/consult">
+                                <i class="zmdi zmdi-view-usuario"></i> Usuários
                             </a>
                         </li>
                         <li>
-                            <a href="/edit">
-                                <i class="zmdi zmdi-link"></i> Colaboradores
+                            <a href="/consult">
+                                <i class="zmdi zmdi-colaboradores"></i> Colaboradores
                             </a>
                         </li>
                         <li>
-                            <a href="/edit">
-                                <i class="zmdi zmdi-widgets"></i> Equipes
+                            <a href="/consult">
+                                <i class="zmdi zmdi-equipes"></i> Equipes
                             </a>
                         </li>
                         <li>
-                            <a href="/edit">
-                                <i class="zmdi zmdi-calendar"></i> Tarefas
+                            <a href="/consult">
+                                <i class="zmdi zmdi-tarefas"></i> Tarefas
                             </a>
                         </li>
 
