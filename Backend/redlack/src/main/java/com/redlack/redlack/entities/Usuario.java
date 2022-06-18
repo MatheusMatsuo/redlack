@@ -31,6 +31,8 @@ public class Usuario implements Serializable /*, UserDetails*/ {
     private String email;
     private String senha;
 
+    private String authorities;
+
 
     public Usuario(){}
 

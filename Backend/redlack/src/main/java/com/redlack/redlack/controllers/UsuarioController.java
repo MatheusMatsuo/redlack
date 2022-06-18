@@ -52,7 +52,9 @@ public class UsuarioController {
         service.deleteById(id);
     }
 
+
     @PutMapping(value = "/editar/{id}")
+
     public void update(@PathVariable Long id, @RequestBody UsuarioDTO dto) {
         service.update(id, dto);
     }
