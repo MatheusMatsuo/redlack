@@ -3,8 +3,13 @@ package com.redlack.redlack.services;
 import com.redlack.redlack.dto.UsuarioDTO;
 import com.redlack.redlack.entities.Usuario;
 import com.redlack.redlack.repositories.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+/*import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+ */
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -76,10 +82,13 @@ public class UsuarioService {
                 .map(usuarioAntigo -> {
                     usuarioAntigo.setNome(dto.getNome());
                     usuarioAntigo.setEmail(dto.getEmail());
+                    usuarioAntigo.setSenha(dto.getSenha());
                     Usuario usuarioNovo = repository.save(usuarioAntigo);
                     UsuarioDTO dtoNovo = new UsuarioDTO(usuarioNovo);
                     return dtoNovo;
                         });
 
     }
+
+
 }
