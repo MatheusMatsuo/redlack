@@ -1,0 +1,12 @@
+
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './routes'
+import './styles.css'
+
+
+export const App = () => {
+  return (
+    
+    <AppRouter />
+  );
+}
