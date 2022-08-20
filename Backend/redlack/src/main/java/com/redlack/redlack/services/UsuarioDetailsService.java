@@ -1,8 +1,9 @@
 package com.redlack.redlack.services;
-
+/*
 import com.redlack.redlack.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
-/*
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UsuarioDetailsService implements UserDetailsService {
 
+    @Autowired
     private final UsuarioRepository usuarioRepository;
 
     @Override
@@ -22,5 +24,5 @@ public class UsuarioDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
     }
     }
- */
+*/
 

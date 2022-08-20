@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -42,7 +43,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public UsuarioDTO insert(@RequestBody UsuarioDTO dto) {
+    public UsuarioDTO insert(@Valid  @RequestBody UsuarioDTO dto) {
         UsuarioDTO result = service.insert(dto);
         return result;
     }
@@ -54,9 +55,15 @@ public class UsuarioController {
 
 
     @PutMapping(value = "/editar/{id}")
-
-    public void update(@PathVariable Long id, @RequestBody UsuarioDTO dto) {
+    public void update(@PathVariable Long id,@Valid @RequestBody UsuarioDTO dto) {
         service.update(id, dto);
+    }
+
+
+    @PostMapping(value = "/usuario-dto")
+    public String saveDto(@RequestBody UsuarioDTO dto){
+        String result = service.saveDto(dto);
+        return result;
     }
 
 }

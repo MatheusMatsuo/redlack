@@ -58,6 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 */
+
+/* 2
 import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -103,3 +105,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 }
+
+ */

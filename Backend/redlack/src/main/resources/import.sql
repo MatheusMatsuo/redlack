@@ -1,8 +1,7 @@
-insert into tb_usuario(nome, email, senha) values('Matheus', 'matheus@teste.com', 'musculo');
-insert into tb_usuario(nome, email) values('João', 'joão@teste.com');
-insert into tb_usuario(nome, email) values('Gal', 'gal@teste.com');
-insert into tb_usuario(nome, email, senha) values('Daniel', 'daniel@teste.com', 'paozinho');
-insert into tb_usuario(nome, email) values('Felipe', 'felipe@teste.com');
-insert into tb_usuario(nome, email) values('Felipe', 'felipe@teste.com');
-insert into tb_usuario(nome, email, senha) values(null, null, null);
+
+insert into tb_usuario(nome, email, senha) values('Matheus', 'matheus@teste.com', 123456);
+insert into tb_usuario(nome, email, senha) values('João', 'joão@teste.com', 123456);
+insert into tb_usuario(nome, email, senha) values('Mario', 'mario@teste.com', 123456);
+insert into tb_usuario(nome, email, senha) values('Anderson', 'anderson@teste.com', 123456);
+
 
