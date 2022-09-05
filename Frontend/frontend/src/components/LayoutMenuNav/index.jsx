@@ -11,28 +11,28 @@ export const LayoutMenuNav = () => {
                 <div id="sidebar">
                     <header>
                         <div className="redlack-titulo">
-                        <a href="/register">Redlack</a>
+                        <a href="/consult">Redlack</a>
                         </div>
                     </header>
-                    <ul class="nav">
+                    <ul className="nav">
                         <li>
                             <a href="/consult">
-                                <i class="zmdi zmdi-view-usuario"></i> Usuários
+                                <i className="zmdi zmdi-view-usuario"></i> Usuários
                             </a>
                         </li>
                         <li>
                             <a href="/consult">
-                                <i class="zmdi zmdi-colaboradores"></i> Colaboradores
+                                <i className="zmdi zmdi-colaboradores"></i> Colaboradores
                             </a>
                         </li>
                         <li>
                             <a href="/consult">
-                                <i class="zmdi zmdi-equipes"></i> Equipes
+                                <i className="zmdi zmdi-equipes"></i> Equipes
                             </a>
                         </li>
                         <li>
                             <a href="/consult">
-                                <i class="zmdi zmdi-tarefas"></i> Tarefas
+                                <i className="zmdi zmdi-tarefas"></i> Tarefas
                             </a>
                         </li>
 
@@ -40,7 +40,7 @@ export const LayoutMenuNav = () => {
                 </div>
 
                 <div id="content">
-                        <div class="container-fluid">
+                        <div className="container-fluid">
                             <Nav />
                         </div>
                 </div>

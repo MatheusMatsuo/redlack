@@ -14,7 +14,7 @@ export const AppRouter = () => {
                <Route path="/register" exact element={<Register />} />
                <Route path="/menu" exact element={<LayoutMenuNav />} />
                <Route path="/consult" exact element={<Consult />} />
-               <Route path="/" exact element={<Consult />} />
+               <Route path="/" exact element={<Login />} />
                <Route path="/edit">
                      <Route path=":id" exact element={<EditParams/>} />
                </Route>
