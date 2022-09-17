@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -19,14 +21,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     public UserDetails loadUserByUsername(String nome) throws UsernameNotFoundException {
-        final Usuario usuario = usuarioRepository.findByNome(nome);
+        final Optional<Usuario> usuario = usuarioRepository.findByNome(nome);
 
         if (usuario == null) {
             throw new UsernameNotFoundException(nome);
         }
 
         UserDetails userDetails = org.springframework.security.core.userdetails.User.withUsername(
-                usuario.getNome()).password(usuario.getSenha()).roles("USER").build();
+                usuario.get().getNome()).password(usuario.get().getSenha()).roles("USER").build();
 
         return userDetails;
     }

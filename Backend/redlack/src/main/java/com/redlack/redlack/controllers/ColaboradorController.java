@@ -1,53 +1,51 @@
 package com.redlack.redlack.controllers;
 
-import ch.qos.logback.core.encoder.EchoEncoder;
-import com.redlack.redlack.dto.EquipeDTO;
+import com.redlack.redlack.dto.ColaboradorDTO;
 import com.redlack.redlack.dto.UsuarioDTO;
-import com.redlack.redlack.model.entities.Usuario;
+import com.redlack.redlack.model.entities.Colaborador;
+import com.redlack.redlack.services.ColaboradorService;
 import com.redlack.redlack.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/usuarios")
-public class UsuarioController {
+@RequestMapping("/colaboradores")
+public class ColaboradorController {
 
     @Autowired
-    private UsuarioService service;
+    private ColaboradorService service;
 
     @GetMapping
-    public ResponseEntity<List<UsuarioDTO>> findAll() {
-        List<UsuarioDTO> result = service.findAll();
+    public ResponseEntity<List<ColaboradorDTO>> findAll() {
+        List<ColaboradorDTO> result = service.findAll();
         return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id) {
-        UsuarioDTO result = service.findById(id);
+    public ResponseEntity<ColaboradorDTO> findById(@PathVariable Long id) {
+        ColaboradorDTO result = service.findById(id);
         return ResponseEntity.ok().body(result);
     }
 
     @GetMapping(value = "/nome/{nome}")
-    public ResponseEntity<UsuarioDTO> findByNome(@PathVariable String nome) {
-        UsuarioDTO result = service.findByNome(nome);
+    public ResponseEntity<ColaboradorDTO> findByNome(@PathVariable String nome) {
+        ColaboradorDTO result = service.findByNome(nome);
         return ResponseEntity.ok().body(result);
     }
 
     @GetMapping(value = "/email/{email}")
-    public ResponseEntity<UsuarioDTO> findByEmail(@PathVariable String email) {
-        UsuarioDTO result = service.findByEmail(email);
+    public ResponseEntity<ColaboradorDTO> findByEmail(@PathVariable String email) {
+        ColaboradorDTO result = service.findByEmail(email);
         return ResponseEntity.ok().body(result);
     }
 
     @PostMapping
-    public UsuarioDTO insert(@Valid  @RequestBody UsuarioDTO dto) {
-        UsuarioDTO result = service.insert(dto);
+    public ColaboradorDTO insert( @RequestBody Colaborador colab) {
+        ColaboradorDTO result = service.insert(colab);
         return result;
     }
 
@@ -59,7 +57,7 @@ public class UsuarioController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping(value = "/{id}")
-    public void update(@PathVariable Long id,@Valid @RequestBody UsuarioDTO dto)
+    public void update(@PathVariable Long id,@Valid @RequestBody ColaboradorDTO dto)
     {
         try {
             service.update(id, dto);
@@ -70,14 +68,4 @@ public class UsuarioController {
             System.out.println(e.getMessage());
         }
     }
-
-
-    @PostMapping(value = "/usuario-dto")
-    public String saveDto(@RequestBody UsuarioDTO dto){
-        String result = service.saveDto(dto);
-        return result;
-    }
-
 }
-
-   

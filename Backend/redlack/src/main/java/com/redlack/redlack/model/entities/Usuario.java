@@ -18,6 +18,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
@@ -35,14 +36,27 @@ public class Usuario implements Serializable  /*,UserDetails*/ {
     private String email;
     private String senha;
 
+
   //  private String authorities;
 
 
     public Usuario(UsuarioDTO dto) {
+        this.id = dto.getId();
         this.nome = dto.getNome();
         this.email = dto.getEmail();
         this.senha = dto.getSenha();
     }
+
+    public static UsuarioDTO converterParaUsuarioDto(Usuario usuario){
+        UsuarioDTO dto = new UsuarioDTO();
+        dto.setId(usuario.getId());
+        dto.setNome(usuario.getNome());
+        dto.setEmail(usuario.getEmail());
+        dto.setSenha(usuario.getSenha());
+        return dto;
+    }
+
+
 
 
     /*

@@ -26,12 +26,13 @@ import static com.redlack.redlack.JWT.SecurityConstants.SECRET;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 
+    @Autowired
     private AuthenticationManager authenticationManager;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
 
-        setFilterProcessesUrl("/usuarios/usuario-dto/login");
+        setFilterProcessesUrl("/login");
     }
 
     @Override
@@ -58,11 +59,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication auth) throws IOException {
         String token = JWT.create()
-                .withSubject(((User) auth.getPrincipal()).getPassword())
+                .withSubject(((User) auth.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(Algorithm.HMAC512(SECRET.getBytes()));
 
-        String body = ((User) auth.getPrincipal()).getUsername() + " " + token;
+        // String body = ((User) auth.getPrincipal()).getUsername() + " " + token;
+        String body = token;
 
         res.getWriter().write(body);
         res.getWriter().flush();

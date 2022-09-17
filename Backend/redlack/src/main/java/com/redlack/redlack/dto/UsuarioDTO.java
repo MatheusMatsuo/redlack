@@ -21,5 +21,7 @@ public class UsuarioDTO{
     private String senha;
 
 
-
+    public String getSenha(){
+        return senha;
+    }
 }

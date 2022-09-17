@@ -20,5 +20,4 @@ public class RedlackApplication {
 		SpringApplication.run(RedlackApplication.class, args);
 	}
 
-
 }
