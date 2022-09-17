@@ -26,9 +26,8 @@ public class Equipe implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
     private Integer enumTipoEquipe;
-
-    @OneToMany(mappedBy = "equipe", cascade = CascadeType.ALL)
-    private Set<Colaborador> colaboradores = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "equipe")
+    private Collection<Colaborador> collectionColaborador;
 
     public Equipe(Long id, String nome, EnumTipoEquipe enumTipoEquipe){
         this.id = id;
@@ -46,26 +45,9 @@ public class Equipe implements Serializable {
         }
     }
 
-
     public Equipe(EquipeDTO dto) {
         this.id = dto.getId();
         this.nome = dto.getNome();
         setEnumTipoEquipe(dto.getEnumTipoEquipe());
-//        dto.getColaboradores().stream()
-//                .forEach(a -> colaboradores.add(a));
-    }
-
-    // colocar no service
-    public static EquipeDTO converterParaEquipeDto(Equipe equipe){
-        EquipeDTO dto = new EquipeDTO();
-        dto.setId(equipe.getId());
-        dto.setNome(equipe.getNome());
-        dto.setEnumTipoEquipe(dto.getEnumTipoEquipe());
-        //dto.setColaboradores(equipe.getColaboradores());
-        return dto;
-    }
-    @JsonIgnore
-    public Set<Colaborador> getColaboradores() {
-        return colaboradores;
     }
 }

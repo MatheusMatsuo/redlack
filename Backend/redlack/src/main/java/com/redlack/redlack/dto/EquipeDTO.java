@@ -23,7 +23,7 @@ public class EquipeDTO {
     private String nome;
     private EnumTipoEquipe enumTipoEquipe;
 
-//    private Set<Colaborador> colaboradores = new HashSet<>();
+    private List<Long> collectionColaborador;
 
     public EnumTipoEquipe getEnumTipoEquipe(){
         return enumTipoEquipe;
