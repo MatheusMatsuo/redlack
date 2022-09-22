@@ -12,9 +12,9 @@ export const Login = () => {
     const [user, setUser] = useState({ name: "", password: "" });
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     Cookies.remove("user");
-    //   }, []);
+     useEffect(() => {
+         Cookies.remove("user");
+       }, []);
 
     function handleSubmitLogin(event) {
         event.preventDefault();

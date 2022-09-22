@@ -1,24 +1,22 @@
-import { LayoutComponents } from "../../components/LayoutComponents";
-import jpIMG from "../../assets/logo.png";
-import { LayoutMenuNav } from "../../components/LayoutMenuNav";
-import { validateEmail } from "../../utils/validade";
-import { BASE_URL } from "../../utils/requests";
-import axios from "axios";
+import { LayoutComponents } from "../../../components/LayoutComponents";
+import jpIMG from "../../../assets/logo.png";
+import { LayoutMenuNav } from "../../../components/LayoutMenuNav";
+import { validateEmail } from "../../../utils/validade";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { api, accessToken } from "../../services/api";
+import { api, accessToken } from "../../../services/api";
 
-export const Edit = ({ id }) => {
+export const EditColaboradores = ({ id }) => {
   const navigate = useNavigate();
 
-  const [usuario, setUsuario] = useState();
+  const [colaboradores, setColaboradores] = useState();
 
   useEffect(() => {
     if (accessToken() == null) {
       navigate("/login");
     }
-    api.get(`/usuarios/${id}`).then((response) => {
-      setUsuario(response.data);
+    api.get(`/colaboradores/${id}`).then((response) => {
+      setColaboradores(response.data);
     });
   }, [id]);
 
@@ -27,35 +25,35 @@ export const Edit = ({ id }) => {
 
     const email = event.target.email.value;
     const nome = event.target.nome.value;
-    const senha = event.target.senha.value;
+    const cargo = event.target.cargo.value;
+    const dataNascimento = event.target.dataNascimento.value;
 
     if (!validateEmail(email)) {
       return;
     }
 
     const data = {
-      nome: nome,
-      email: email,
-      senha: senha,
+        nome: nome,
+        email: email,
+        cargo: cargo,
+        dataNascimento: dataNascimento
+    };
+
+    api
+      .put(`/colaboradores/${id}`, data)
+      .then(res => (
+        navigate('/colaboradores/consult')
+      ))
+      .catch((err) => console.log(err.message));
   };
-
-  api
-    .put(`/usuarios/${id}`, data)
-    .then(res => (
-      navigate('/consult')
-    ))
-    .catch((err) => console.log(err.message));
-
-    console.log(api.defaults);
-};
 
   const handleSubmitDelet = (event) => {
     event.preventDefault();
 
     api
-    .delete(`/usuarios/${id}`)
+    .delete(`/colaboradores/${id}`)
     .then(res => (
-      navigate('/consult')
+      navigate('/colaboradores/consult')
     ))
     .catch((err) => console.log(err.message));
     console.log(api.defaults);
@@ -66,7 +64,7 @@ export const Edit = ({ id }) => {
       <LayoutMenuNav />
       <LayoutComponents>
         <form className="login-form" onSubmit={handleSubmitUpdate}>
-          <span className="login-form-title">Editar Usuário</span>
+          <span className="login-form-title">Editar Colaborador</span>
           <span className="login-form-title">
             <img src={jpIMG} alt="Jovem Programador" />
           </span>
@@ -77,8 +75,8 @@ export const Edit = ({ id }) => {
               type="nome"
               className="has-val input"
               id="nome"
-              value={usuario?.nome}
-              onChange={() => setUsuario().nome}
+              value={colaboradores?.nome}
+              onChange={() => setColaboradores().nome}
             />
           </div>
 
@@ -88,22 +86,32 @@ export const Edit = ({ id }) => {
               type="email"
               className="has-val input"
               id="email"
-              value={usuario?.email}
-              onChange={() => setUsuario().nome}
+              value={colaboradores?.email}
+              onChange={() => setColaboradores().nome}
             />
           </div>
 
           <div className="wrap-input">
-            <label htmlFor="senha">Informe sua senha</label>
+            <label htmlFor="cargo">Informe seu cargo</label>
             <input
-              type="password"
+              type="text"
               className="has-val input"
-              id="senha"
-              value={usuario?.senha}
-              onChange={() => setUsuario().nome}
+              id="cargo"
+              value={colaboradores?.senha}
+              onChange={() => setColaboradores().nome}
             />
           </div>
 
+          <div className="wrap-input">
+            <label htmlFor="dataNascimento">Informe sua data de nascimento</label>
+            <input
+              type="text"
+              className="has-val input"
+              id="dataNascimento"
+              value={colaboradores?.senha}
+              onChange={() => setColaboradores().nome}
+            />
+          </div>
           <div className="container-login-form-btn">
             <button className="login-form-btn" type="submit">
               Editar
