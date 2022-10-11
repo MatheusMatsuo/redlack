@@ -10,8 +10,12 @@ export const LayoutConsultEquipes = ({  nome, enumTipoEquipe, id }) => {
         Nome: {nome} <br></br>
          Tipo: {enumTipoEquipe} <br></br>
     </li>
-        <Link to={`/colaboradores/edit/${id}`}>
+        <Link to={`/equipes/saveEdit/${id}`}>
       <button className="btn-consult">Editar</button>
+      </Link>´
+
+      <Link to={`/equipes/${id}/colaboradores`}>
+      <button className="btn-consult">Colaboradores</button>
       </Link>´
     </div>
   );

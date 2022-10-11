@@ -1,12 +1,11 @@
 import { LayoutComponents } from "../../../components/LayoutComponents";
 import jpIMG from "../../../assets/logo.png";
 import { LayoutMenuNav } from "../../../components/LayoutMenuNav";
-import { validateEmail } from "../../../utils/validade";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { api, accessToken } from "../../../services/api";
 
-export const EditEquipes = ({ id }) => {
+export const SaveEditEquipes = ({ id }) => {
   const navigate = useNavigate();
 
   const [equipes, setEquipes] = useState();
@@ -15,32 +14,32 @@ export const EditEquipes = ({ id }) => {
     if (accessToken() == null) {
       navigate("/login");
     }
-    api.get(`/equipes/${id}`).then((response) => {
-      setEquipes(response.data);
-    });
-  }, [id]);
+
+    if (id != null) {
+      api.get(`/equipes/${id}`).then((response) => {
+        setEquipes(response.data);
+        console.log(response);
+      });
+    } 
+  }, []);
 
   const handleSubmitUpdate = (event) => {
     event.preventDefault();
 
-    const email = event.target.email.value;
     const nome = event.target.nome.value;
-    const cargo = event.target.cargo.value;
-    const dataNascimento = event.target.dataNascimento.value;
+    const enumTipoEquipe = event.target.enumTipoEquipe.value;
+    var data;
 
-    if (!validateEmail(email)) {
-      return;
-    }
-
-    const data = {
-      nome: nome,
-      email: email,
-      cargo: cargo,
-      dataNascimento: dataNascimento,
-    };
-
+      data = {
+        id: id,
+        nome: nome,
+        enumTipoEquipe: enumTipoEquipe,
+        collectionColaborador: []
+      };
+    
+    console.log(data);
     api
-      .put(`/equipes/${id}`, data)
+      .post(`/equipes`, data)
       .then((res) => navigate("/equipes/consult"))
       .catch((err) => console.log(err.message));
   };
@@ -52,7 +51,6 @@ export const EditEquipes = ({ id }) => {
       .delete(`/equipes/${id}`)
       .then((res) => navigate("/equipes/consult"))
       .catch((err) => console.log(err.message));
-    console.log(api.defaults);
   };
 
   return (
@@ -60,15 +58,15 @@ export const EditEquipes = ({ id }) => {
       <LayoutMenuNav />
       <LayoutComponents>
         <form className="login-form" onSubmit={handleSubmitUpdate}>
-          <span className="login-form-title">Editar Colaborador</span>
+          <span className="login-form-title">Editar Equipe</span>
           <span className="login-form-title">
             <img src={jpIMG} alt="Jovem Programador" />
           </span>
 
           <div className="wrap-input">
-            <label htmlFor="nome">Informe seu nome</label>
+            <label htmlFor="nome">Informe o nome da equipe</label>
             <input
-              type="nome"
+              type="text"
               className="has-val input"
               id="nome"
               value={equipes?.nome}
@@ -77,19 +75,19 @@ export const EditEquipes = ({ id }) => {
           </div>
 
           <div className="wrap-input">
-            <label htmlFor="email">Informe o tipo da equipe</label>
+            <label htmlFor="enumTipoEquipe">Informe o tipo da equipe</label>
 
-            <label for="BACKEND">Backend:</label>
-            <input type="checkbox" id="BACKEND" value="BACKEND" />
-            <label for="FRONTEND">Frontend:</label>
-            <input type="checkbox" id="FRONTEND" value="FRONTEND" />
-            <label for="TESTER">Tester:</label>
-            <input type="checkbox" id="TESTER" value="TESTER" />
+            <select className="has-val input" id="enumTipoEquipe" value={equipes?.enumTipoEquipe}
+             onChange={() => setEquipes().enumTipoEquipe}>
+              <option value="BACKEND">Backend</option>
+              <option value="FRONTEND">Frontend</option>
+              <option value="TESTER">Tester</option>
+            </select>
           </div>
 
           <div className="container-login-form-btn">
             <button className="login-form-btn" type="submit">
-              Editar
+              Salvar
             </button>
           </div>
           <div className="container-login-form-btn">

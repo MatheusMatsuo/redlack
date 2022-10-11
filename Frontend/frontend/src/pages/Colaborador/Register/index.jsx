@@ -21,6 +21,8 @@ export const RegisterColaboradores = () => {
     const email = event.target.email.value;
     const nome = event.target.nome.value;
     const cargo = event.target.cargo.value;
+    const slack_id = event.target.slack_id.value;
+    const redmine_user_id = event.target.redmine_user_id.value;
     const dataNascimento = event.target.dataNascimento.value;
 
     if (!validateEmail(email)) {
@@ -31,8 +33,12 @@ export const RegisterColaboradores = () => {
         nome: nome,
         email: email,
         cargo: cargo,
+        slack_id: slack_id,
+        redmine_user_id: redmine_user_id,
         dataNascimento: dataNascimento
     };
+
+    console.log(data);
 
     api
       .post('/colaboradores', data)
@@ -65,6 +71,16 @@ export const RegisterColaboradores = () => {
           <div className="wrap-input">
             <label htmlFor="cargo">Informe seu cargo</label>
             <input type="text" className="has-val input" id="cargo" />
+          </div>
+
+          <div className="wrap-input">
+            <label htmlFor="slack_id">Informe seu id do Slack</label>
+            <input type="text" className="has-val input" id="slack_id" />
+          </div>
+
+          <div className="wrap-input">
+            <label htmlFor="redmine_user_id">Informe seu id do Redmine</label>
+            <input type="text" className="has-val input" id="redmine_user_id" />
           </div>
 
           <div className="wrap-input">

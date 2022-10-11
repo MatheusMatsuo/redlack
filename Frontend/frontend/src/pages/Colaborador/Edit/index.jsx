@@ -27,6 +27,8 @@ export const EditColaboradores = ({ id }) => {
     const nome = event.target.nome.value;
     const cargo = event.target.cargo.value;
     const dataNascimento = event.target.dataNascimento.value;
+    const slack_id = event.target.slack_id.value;
+    const redmine_user_id = event.target.redmine_id.value;
 
     if (!validateEmail(email)) {
       return;
@@ -36,6 +38,8 @@ export const EditColaboradores = ({ id }) => {
         nome: nome,
         email: email,
         cargo: cargo,
+        slack_id: slack_id,
+        redmine_user_id: redmine_user_id,
         dataNascimento: dataNascimento
     };
 
@@ -87,7 +91,7 @@ export const EditColaboradores = ({ id }) => {
               className="has-val input"
               id="email"
               value={colaboradores?.email}
-              onChange={() => setColaboradores().nome}
+              onChange={() => setColaboradores().email}
             />
           </div>
 
@@ -97,8 +101,30 @@ export const EditColaboradores = ({ id }) => {
               type="text"
               className="has-val input"
               id="cargo"
-              value={colaboradores?.senha}
-              onChange={() => setColaboradores().nome}
+              value={colaboradores?.cargo}
+              onChange={() => setColaboradores().cargo}
+            />
+          </div>
+
+          <div className="wrap-input">
+            <label htmlFor="slack_idj">Informe seu Slack id</label>
+            <input
+              type="text"
+              className="has-val input"
+              id="slack_id"
+              value={colaboradores?.slack_id}
+              onChange={() => setColaboradores().slack_id}
+            />
+          </div>
+
+          <div className="wrap-input">
+            <label htmlFor="redmine_user_id">Informe seu Redmine id</label>
+            <input
+              type="text"
+              className="has-val input"
+              id="redmine_user_id"
+              value={colaboradores?.redmine_user_id}
+              onChange={() => setColaboradores().redmine_user_id}
             />
           </div>
 
@@ -108,8 +134,8 @@ export const EditColaboradores = ({ id }) => {
               type="text"
               className="has-val input"
               id="dataNascimento"
-              value={colaboradores?.senha}
-              onChange={() => setColaboradores().nome}
+              value={colaboradores?.dataNascimento}
+              onChange={() => setColaboradores().dataNascimento}
             />
           </div>
           <div className="container-login-form-btn">
