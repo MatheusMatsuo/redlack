@@ -56,6 +56,8 @@ export const ConsultColaboradores = () => {
                 cargo= {colab.cargo}
                 email={colab.email}
                 dataNascimento={colab.dataNascimento}
+                slack_id={colab.slack_id}
+                redmine_user_id={colab.redmine_user_id}
               />
         } else{
             return <LayoutConsultColaboradores
@@ -65,6 +67,8 @@ export const ConsultColaboradores = () => {
                 cargo= {colab.cargo}
                 email={colab.email}
                 dataNascimento={colab.dataNascimento}
+                slack_id={colab.slack_id}
+                redmine_user_id={colab.redmine_user_id}
                 nomeEquipe={colab.equipe.nome}
               />
         }

@@ -50,6 +50,7 @@ export const ConsultEquipes = () => {
                 nome={eq.nome}
                 enumTipoEquipe={eq.enumTipoEquipe}
                 id={eq.id}
+                canal_id={eq.canal_id}
               />
             ))}
           </ul>

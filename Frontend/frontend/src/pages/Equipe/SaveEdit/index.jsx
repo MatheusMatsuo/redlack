@@ -27,6 +27,7 @@ export const SaveEditEquipes = ({ id }) => {
     event.preventDefault();
 
     const nome = event.target.nome.value;
+    const canal_id = event.target.canal_id.value;
     const enumTipoEquipe = event.target.enumTipoEquipe.value;
     var data;
 
@@ -34,6 +35,7 @@ export const SaveEditEquipes = ({ id }) => {
         id: id,
         nome: nome,
         enumTipoEquipe: enumTipoEquipe,
+        canal_id: canal_id,
         collectionColaborador: []
       };
     
@@ -58,7 +60,7 @@ export const SaveEditEquipes = ({ id }) => {
       <LayoutMenuNav />
       <LayoutComponents>
         <form className="login-form" onSubmit={handleSubmitUpdate}>
-          <span className="login-form-title">Editar Equipe</span>
+          <span className="login-form-title">Salvar Equipe</span>
           <span className="login-form-title">
             <img src={jpIMG} alt="Jovem Programador" />
           </span>
@@ -83,6 +85,17 @@ export const SaveEditEquipes = ({ id }) => {
               <option value="FRONTEND">Frontend</option>
               <option value="TESTER">Tester</option>
             </select>
+          </div>
+
+          <div className="wrap-input">
+            <label htmlFor="nome">Informe o id do canal da equipe</label>
+            <input
+              type="text"
+              className="has-val input"
+              id="canal_id"
+              value={equipes?.canal_id}
+              onChange={() => setEquipes().canal_id}
+            />
           </div>
 
           <div className="container-login-form-btn">

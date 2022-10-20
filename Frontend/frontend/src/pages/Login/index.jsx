@@ -28,6 +28,8 @@ export const Login = () => {
                     //api.defaults.headers.authorization =  accessToken();
                     navigate("/consult");
                 }
+            }).catch(res => {
+                alert("Nome de usuário ou senha inválido! ")
             })
         }
     }
@@ -44,12 +46,12 @@ export const Login = () => {
 
                 <div className="wrap-input">
                     <input className={user.name !== "" ? 'has-val input' : 'input'} type="text" value={user.name} onChange={(e) => setUser((prevState) => ({ ...prevState, name: e.target.value }))} />
-                    <span className="focus-input" data-placeholder="Nome"></span>
+                    <span className="focus-input" data-placeholder="Nome de usuário"></span>
                 </div>
 
                 <div className="wrap-input">
                     <input className={user.password !== "" ? 'has-val input' : 'input'} type="password" value={user.password} onChange={(e) => setUser((prevState) => ({ ...prevState, password: e.target.value }))} />
-                    <span className="focus-input" data-placeholder="Password"></span>
+                    <span className="focus-input" data-placeholder="Senha"></span>
                 </div>
 
                 <div className="container-login-form-btn">
