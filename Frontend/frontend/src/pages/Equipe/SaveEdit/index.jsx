@@ -42,21 +42,30 @@ export const SaveEditEquipes = ({ id }) => {
     console.log(data);
     api
       .post(`/equipes`, data)
-      .then((res) => navigate("/equipes/consult"))
-      .catch((err) => console.log(err.message));
+      .then((res) => 
+      navigate("/equipes/consult"))
+      .catch((err) => {
+        alert(err.response.data.message)
+    });
   };
 
   const handleSubmitDelet = (event) => {
     event.preventDefault();
+    var resultado = window.confirm("Deseja excluir a equipe ?");
 
+    if(resultado == true){
     api
       .delete(`/equipes/${id}`)
       .then((res) => navigate("/equipes/consult"))
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        alert("Argumento inválido!")
+    });
+  }
   };
 
+  if(id){
   return (
-    <div>
+    <div> 
       <LayoutMenuNav />
       <LayoutComponents>
         <form className="login-form" onSubmit={handleSubmitUpdate}>
@@ -73,6 +82,7 @@ export const SaveEditEquipes = ({ id }) => {
               id="nome"
               value={equipes?.nome}
               onChange={() => setEquipes().nome}
+              required
             />
           </div>
 
@@ -95,6 +105,7 @@ export const SaveEditEquipes = ({ id }) => {
               id="canal_id"
               value={equipes?.canal_id}
               onChange={() => setEquipes().canal_id}
+              required
             />
           </div>
 
@@ -112,4 +123,60 @@ export const SaveEditEquipes = ({ id }) => {
       </LayoutComponents>
     </div>
   );
+  }else{
+    return (
+      <div> 
+        <LayoutMenuNav />
+        <LayoutComponents>
+          <form className="login-form" onSubmit={handleSubmitUpdate}>
+            <span className="login-form-title">Salvar Equipe</span>
+            <span className="login-form-title">
+              <img src={jpIMG} alt="Jovem Programador" />
+            </span>
+  
+            <div className="wrap-input">
+              <label htmlFor="nome">Informe o nome da equipe</label>
+              <input
+                type="text"
+                className="has-val input"
+                id="nome"
+                value={equipes?.nome}
+                onChange={() => setEquipes().nome}
+                required
+              />
+            </div>
+  
+            <div className="wrap-input">
+              <label htmlFor="enumTipoEquipe">Informe o tipo da equipe</label>
+  
+              <select className="has-val input" id="enumTipoEquipe" value={equipes?.enumTipoEquipe}
+               onChange={() => setEquipes().enumTipoEquipe}>
+                <option value="BACKEND">Backend</option>
+                <option value="FRONTEND">Frontend</option>
+                <option value="TESTER">Tester</option>
+              </select>
+            </div>
+  
+            <div className="wrap-input">
+              <label htmlFor="nome">Informe o id do canal da equipe</label>
+              <input
+                type="text"
+                className="has-val input"
+                id="canal_id"
+                value={equipes?.canal_id}
+                onChange={() => setEquipes().canal_id}
+                required
+              />
+            </div>
+  
+            <div className="container-login-form-btn">
+              <button className="login-form-btn" type="submit">
+                Salvar
+              </button>
+            </div>
+          </form>
+        </LayoutComponents>
+      </div>
+    );
+  }
 };

@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import jpIMG from '../../assets/logo.png';
 import { LayoutComponents } from '../../components/LayoutComponents';
-import { accessToken, api } from '../../services/api';
+import {  api } from '../../services/api';
 import Cookies from 'js-cookie';
 
 
@@ -25,7 +25,6 @@ export const Login = () => {
             }).then(res => {
                 if (res.data) {
                     Cookies.set("user", JSON.stringify(res.data), { path: `/` });
-                    //api.defaults.headers.authorization =  accessToken();
                     navigate("/consult");
                 }
             }).catch(res => {

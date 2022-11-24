@@ -1,12 +1,11 @@
-import { LayoutComponents } from "../../components/LayoutComponents";
-import jpIMG from "../../assets/logo.png";
-import { LayoutMenuNav } from "../../components/LayoutMenuNav";
-import { validateEmail } from "../../utils/validade";
-import { BASE_URL } from "../../utils/requests";
-import axios from "axios";
+import { LayoutComponents } from "../../../components/LayoutComponents";
+import jpIMG from "../../../assets/logo.png";
+import { LayoutMenuNav } from "../../../components/LayoutMenuNav";
+import { validateEmail } from "../../../utils/validade";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { api, accessToken } from "../../services/api";
+import { api, accessToken } from "../../../services/api";
+import { Alert } from "bootstrap";
 
 export const Edit = ({ id }) => {
   const navigate = useNavigate();
@@ -41,24 +40,32 @@ export const Edit = ({ id }) => {
 
   api
     .put(`/usuarios/${id}`, data)
-    .then(res => (
-      navigate('/consult')
-    ))
-    .catch((err) => console.log(err.message));
+    .then(res =>  {
+      Alert.alert("sucesso", "Cadastrsdo")
+     navigate('/consult')
+     })
+    .catch((err) => {
+      alert(err.response.data.message)
+      console.log(err);
+  });
 
     console.log(api.defaults);
 };
 
   const handleSubmitDelet = (event) => {
     event.preventDefault();
+    var resultado = window.confirm("Deseja excluir o usuário ?");
 
+    if(resultado == true){
     api
     .delete(`/usuarios/${id}`)
-    .then(res => (
+    .then(res => {
+      alert('Usuário',{ buttons: { Ok: false }});
       navigate('/consult')
-    ))
+    })
     .catch((err) => console.log(err.message));
-    console.log(api.defaults);
+    }
+
 };
 
   return (
@@ -79,6 +86,7 @@ export const Edit = ({ id }) => {
               id="nome"
               value={usuario?.nome}
               onChange={() => setUsuario().nome}
+              required
             />
           </div>
 
@@ -90,6 +98,7 @@ export const Edit = ({ id }) => {
               id="email"
               value={usuario?.email}
               onChange={() => setUsuario().nome}
+              required
             />
           </div>
 
@@ -99,8 +108,8 @@ export const Edit = ({ id }) => {
               type="password"
               className="has-val input"
               id="senha"
-              value={usuario?.senha}
               onChange={() => setUsuario().nome}
+              required
             />
           </div>
 
@@ -110,7 +119,7 @@ export const Edit = ({ id }) => {
             </button>
           </div>
           <div className="container-login-form-btn">
-            <button className="login-form-btn" onClick={handleSubmitDelet}>
+            <button className="login-form-btn" data-dismiss="alert" onClick={handleSubmitDelet}>
               Deletar
             </button>
           </div>

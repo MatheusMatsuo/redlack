@@ -13,7 +13,8 @@ export const ConsultColaboradores = () => {
     console.log(api.defaults);
     if (accessToken() == null) {
       navigate("/login");
-    }if(api.defaults.headers.authorization == null){
+    }
+    if(api.defaults.headers.authorization == null){
       window.location.reload()
     }
   }, []);

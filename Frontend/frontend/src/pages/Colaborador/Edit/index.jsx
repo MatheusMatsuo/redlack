@@ -28,7 +28,7 @@ export const EditColaboradores = ({ id }) => {
     const cargo = event.target.cargo.value;
     const dataNascimento = event.target.dataNascimento.value;
     const slack_id = event.target.slack_id.value;
-    const redmine_user_id = event.target.redmine_id.value;
+    const redmine_user_id = event.target.redmine_user_id.value;
 
     if (!validateEmail(email)) {
       return;
@@ -48,12 +48,16 @@ export const EditColaboradores = ({ id }) => {
       .then(res => (
         navigate('/colaboradores/consult')
       ))
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        alert(err.response.data.message)
+    });
   };
 
   const handleSubmitDelet = (event) => {
     event.preventDefault();
+    var resultado = window.confirm("Deseja excluir o colaborador ?");
 
+    if(resultado == true){
     api
     .delete(`/colaboradores/${id}`)
     .then(res => (
@@ -61,6 +65,7 @@ export const EditColaboradores = ({ id }) => {
     ))
     .catch((err) => console.log(err.message));
     console.log(api.defaults);
+    }
 };
 
   return (
@@ -70,7 +75,7 @@ export const EditColaboradores = ({ id }) => {
         <form className="login-form" onSubmit={handleSubmitUpdate}>
           <span className="login-form-title">Editar Colaborador</span>
           <span className="login-form-title">
-            <img src={jpIMG} alt="Jovem Programador" />
+          <img src={jpIMG} alt="Jovem Programador" />
           </span>
 
           <div className="wrap-input">
@@ -81,6 +86,7 @@ export const EditColaboradores = ({ id }) => {
               id="nome"
               value={colaboradores?.nome}
               onChange={() => setColaboradores().nome}
+              required
             />
           </div>
 
@@ -92,6 +98,7 @@ export const EditColaboradores = ({ id }) => {
               id="email"
               value={colaboradores?.email}
               onChange={() => setColaboradores().email}
+              required
             />
           </div>
 
@@ -103,6 +110,7 @@ export const EditColaboradores = ({ id }) => {
               id="cargo"
               value={colaboradores?.cargo}
               onChange={() => setColaboradores().cargo}
+              required
             />
           </div>
 
@@ -114,6 +122,7 @@ export const EditColaboradores = ({ id }) => {
               id="slack_id"
               value={colaboradores?.slack_id}
               onChange={() => setColaboradores().slack_id}
+              required
             />
           </div>
 
@@ -125,6 +134,7 @@ export const EditColaboradores = ({ id }) => {
               id="redmine_user_id"
               value={colaboradores?.redmine_user_id}
               onChange={() => setColaboradores().redmine_user_id}
+              required
             />
           </div>
 
@@ -136,6 +146,7 @@ export const EditColaboradores = ({ id }) => {
               id="dataNascimento"
               value={colaboradores?.dataNascimento}
               onChange={() => setColaboradores().dataNascimento}
+              required
             />
           </div>
           <div className="container-login-form-btn">

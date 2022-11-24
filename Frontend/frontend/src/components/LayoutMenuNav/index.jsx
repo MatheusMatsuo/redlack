@@ -31,11 +31,6 @@ export const LayoutMenuNav = () => {
                             </a>
                         </li>
                         <li>
-                            <a href="/consult">
-                                <i className="zmdi zmdi-tarefas"></i> Tarefas
-                            </a>
-                        </li>
-                        <li>
                             <a href="/login">
                                 <i className="zmdi zmdi-tarefas"></i> Logout
                             </a>

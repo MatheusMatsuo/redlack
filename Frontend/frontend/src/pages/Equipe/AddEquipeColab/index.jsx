@@ -44,6 +44,9 @@ export const AddEquipeColab = ({ id }) => {
 )}
           </ul>
         </div>
+        <Link to={`/equipes/${id}/colaboradores`}>
+      <button className="btn-consult btn-consult-voltar">Voltar</button>
+      </Link>´
       </div>
     </div>
   );

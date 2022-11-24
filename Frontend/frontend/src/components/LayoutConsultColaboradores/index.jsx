@@ -17,7 +17,7 @@ export const LayoutConsultColaboradores = ({  nome, email, id, nomeEquipe, dataN
          Redmine id: {redmine_user_id} <br></br>
         Equipe: {nomeEquipe}</li>
         <Link to={`/colaboradores/edit/${id}`}>
-      <button className="btn-consult">Editar</button>
+      <button className="btn-consult">Ações</button>
       </Link>´
     </div>
   );

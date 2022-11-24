@@ -61,6 +61,9 @@ export const ConsultEquipesColab = ({ id }) => {
 )}
           </ul>
         </div>
+        <Link to={`/equipes/consult`}>
+      <button className="btn-consult btn-consult-voltar">Voltar</button>
+      </Link>´
       </div>
     </div>
   );

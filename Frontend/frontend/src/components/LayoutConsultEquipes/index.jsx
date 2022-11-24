@@ -11,13 +11,15 @@ export const LayoutConsultEquipes = ({  nome, enumTipoEquipe, id, canal_id }) =>
          Tipo: {enumTipoEquipe} <br></br>
          Canal id: {canal_id} <br></br>
     </li>
+    <div>
         <Link to={`/equipes/saveEdit/${id}`}>
-      <button className="btn-consult">Editar</button>
+      <button className="btn-consult btn-consult-equipe">Ações</button>
       </Link>´
 
       <Link to={`/equipes/${id}/colaboradores`}>
-      <button className="btn-consult">Colaboradores</button>
+      <button className="btn-consult btn-consult-equipe">Colab</button>
       </Link>´
+      </div>
     </div>
   );
 };

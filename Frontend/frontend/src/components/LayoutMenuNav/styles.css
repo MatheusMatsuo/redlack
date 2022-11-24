@@ -4,7 +4,7 @@ body {
   overflow-x: hidden;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  background-color: #333;
+  background-color: rgb(211, 211, 211);
 }
 /* Toggle Styles */
 
@@ -40,7 +40,7 @@ body {
 }
 
 #sidebar header {
-  background-color: #000;
+  background-color: rgb(24, 24, 24);
   font-size: 20px;
   line-height: 52px;
   text-align: center;

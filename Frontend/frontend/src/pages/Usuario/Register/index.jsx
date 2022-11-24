@@ -1,10 +1,10 @@
-import { LayoutComponents } from "../../components/LayoutComponents";
-import jpIMG from "../../assets/logo.png";
-import { LayoutMenuNav } from "../../components/LayoutMenuNav";
-import { validateEmail } from "../../utils/validade";
+import { LayoutComponents } from "../../../components/LayoutComponents";
+import jpIMG from "../../../assets/logo.png";
+import { LayoutMenuNav } from "../../../components/LayoutMenuNav";
+import { validateEmail } from "../../../utils/validade";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { accessToken, api } from "../../services/api";
+import { useEffect } from "react";
+import { accessToken, api } from "../../../services/api";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export const Register = () => {
     }
   }, []);
 
-  const handleSubmit =  (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const email = event.target.email.value;
@@ -27,17 +27,21 @@ export const Register = () => {
     }
 
     const data = {
-        nome: nome,
-        email: email,
-        senha: senha,
+      nome: nome,
+      email: email,
+      senha: senha,
     };
 
     api
-      .post('/usuarios/usuario-dto', data)
-      .then(res => (
-        navigate('/consult')
-      ))
-      .catch((err) => console.log(err.message));
+      .post("/usuarios/usuario-dto", data)
+      .then((res) => {
+        alert('Usuário cadastrado!',{ buttons: { }});
+        navigate("/consult");
+      })
+      .catch((err) => {
+        alert(err.response.data.message);
+        console.log(err);
+      });
   };
 
   return (
@@ -52,22 +56,27 @@ export const Register = () => {
 
           <div className="wrap-input">
             <label htmlFor="nome">Informe seu nome</label>
-            <input type="text" className="has-val input" id="nome" />
+            <input type="text" className="has-val input" id="nome" required />
           </div>
 
           <div className="wrap-input">
             <label htmlFor="email">Informe seu email</label>
-            <input type="email" className="has-val input" id="email" />
+            <input type="email" className="has-val input" id="email" required />
           </div>
 
           <div className="wrap-input">
             <label htmlFor="senha">Informe sua senha</label>
-            <input type="password" className="has-val input" id="senha" />
+            <input
+              type="password"
+              className="has-val input"
+              id="senha"
+              required
+            />
           </div>
 
           <div className="container-login-form-btn">
             <button className="login-form-btn" type="submit">
-              Cadastrar
+              Salvar
             </button>
           </div>
         </form>

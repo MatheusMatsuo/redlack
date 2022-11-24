@@ -45,7 +45,9 @@ export const RegisterColaboradores = () => {
       .then(res => (
         navigate('/colaboradores/consult')
       ))
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        alert(err.response.data.message);
+    });
   };
 
   return (
@@ -60,37 +62,37 @@ export const RegisterColaboradores = () => {
 
           <div className="wrap-input">
             <label htmlFor="nome">Informe seu nome</label>
-            <input type="text" className="has-val input" id="nome" />
+            <input type="text" className="has-val input" id="nome" required/>
           </div>
 
           <div className="wrap-input">
             <label htmlFor="email">Informe seu email</label>
-            <input type="email" className="has-val input" id="email" />
+            <input type="email" className="has-val input" id="email" required/>
           </div>
 
           <div className="wrap-input">
             <label htmlFor="cargo">Informe seu cargo</label>
-            <input type="text" className="has-val input" id="cargo" />
+            <input type="text" className="has-val input" id="cargo" required/>
           </div>
 
           <div className="wrap-input">
             <label htmlFor="slack_id">Informe seu id do Slack</label>
-            <input type="text" className="has-val input" id="slack_id" />
+            <input type="text" className="has-val input" id="slack_id" required/>
           </div>
 
           <div className="wrap-input">
             <label htmlFor="redmine_user_id">Informe seu id do Redmine</label>
-            <input type="text" className="has-val input" id="redmine_user_id" />
+            <input type="text" className="has-val input" id="redmine_user_id" required/>
           </div>
 
           <div className="wrap-input">
             <label htmlFor="dataNascimento">Informe sua data de nascimento</label>
-            <input type="text" className="has-val input" id="dataNascimento" placeholder="dd/MM/yyyy"/>
+            <input type="text" className="has-val input" id="dataNascimento" placeholder="yyyy-MM-dd" required/>
           </div>
 
           <div className="container-login-form-btn">
             <button className="login-form-btn" type="submit">
-              Cadastrar
+              Salvar
             </button>
           </div>
         </form>

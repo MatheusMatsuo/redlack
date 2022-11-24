@@ -1,4 +1,4 @@
-import jpIMG from '../../assets/logo.png';
+import jpIMG from '../../assets/logo2.png';
 import './styles.css'
 
 export const Nav = () => {

@@ -19,7 +19,7 @@ export const LayoutConsultEquipesColab = ({  nome, email, id, idEquipe }) => {
         Nome: {nome} <br></br>
         Email: {email}
     </li>
-      <button className="btn-consult" onClick={handleSubmitRemoveColab}> Remover</button>
+      <button className="btn-consult btn-consult-removeColabEq" onClick={handleSubmitRemoveColab}> Remover</button>
     </div>
   );
 };

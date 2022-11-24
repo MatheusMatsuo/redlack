@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { LayoutMenuNav } from "../../components/LayoutMenuNav";
-import { LayoutConsult } from "../../components/LayoutConsult";
+import { LayoutMenuNav } from "../../../components/LayoutMenuNav";
+import { LayoutConsult } from "../../../components/LayoutConsult";
 import { Link, useNavigate } from "react-router-dom";
-import { accessToken, api } from "../../services/api";
+import { accessToken, api } from "../../../services/api";
 
 
 export const Consult = () => {

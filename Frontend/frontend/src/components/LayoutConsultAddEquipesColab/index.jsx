@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { api } from '../../services/api';
 
 
@@ -17,7 +18,7 @@ export const LayoutConsultAddEquipesColab = ({  nome, email, id, idEquipe }) => 
         Nome: {nome} <br></br>
         Email: {email}
     </li>
-      <button className="btn-consult" onClick={handleSubmitAddColab}> Adicionar</button>
+      <button className="btn-consult btn-consult-removeColabEq" onClick={handleSubmitAddColab}> Adicionar</button>
     </div>
   );
 };
